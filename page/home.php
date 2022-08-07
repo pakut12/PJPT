@@ -529,16 +529,26 @@ if (isset($_POST["submit"])) {
 
             $("#mytable").DataTable({
                 dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ],
+                buttons: [{
+                    extend: 'excel',
+                    text: 'File Name',
+                    exportOptions: {
+                        modifier: {
+                            page: 'all'
+                        }
+                    },
+                    header: false,
+                    messageTop: null,
+                    title: null
+
+                }],
                 processing: true,
                 serverSide: true,
                 ajax: '../server_processing.php',
                 order: [
                     [1, "desc"],
                 ],
-                "pageLength": 15
+                pageLength: 15,
             });
 
 
